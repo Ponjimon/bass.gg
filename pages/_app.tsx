@@ -15,7 +15,7 @@ export default class MyApp extends App {
     return (
       <>
         <Head>
-          <title>simon.rip</title>
+          <title>DieBassBooster</title>
         </Head>
         <ThemeProvider theme={theme}>
           <Component {...pageProps} />

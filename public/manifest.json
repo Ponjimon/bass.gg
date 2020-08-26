@@ -1,11 +1,11 @@
 {
-    "name": "simon.rip",
-    "short_name": "simon.rip",
-    "background_color": "#2d2f2d",
-    "description": "simon.rip",
+    "name": "DieBassBooster",
+    "short_name": "DieBassBooster",
+    "background_color": "#3f48cc",
+    "description": "DieBassBooster",
     "display": "fullscreen",
     "start_url": "/",
-    "theme_color": "#2d2f2d",
+    "theme_color": "#3f48cc",
     "icons": [
         {
           "src": "static/192.png",
