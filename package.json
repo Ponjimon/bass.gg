@@ -1,0 +1,127 @@
+{
+  "name": "bass.gg",
+  "dummy": true,
+  "version": "0.1.0",
+  "private": true,
+  "author": "Simon <sn@hitbox.tv>",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "@types/node": "^14.6.0",
+    "@types/react": "^16.9.47",
+    "@types/react-lazy-load-image-component": "^1.5.1",
+    "@types/styled-components": "^5.1.2",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
+    "babel-plugin-styled-components": "^1.11.1",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.13",
+    "prettier": "^2.1.0",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "next": "^9.5.2",
+    "next-offline": "^5.0.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-lazy-load-image-component": "^1.5.0",
+    "styled-components": "^5.1.1",
+    "styled-reset": "^4.2.2"
+  },
+  "babel": {
+    "presets": [
+      "next/babel"
+    ],
+    "plugins": [
+      [
+        "styled-components",
+        {
+          "ssr": true
+        }
+      ]
+    ]
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "semi": true,
+    "parser": "typescript"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "eslintIgnore": [
+    "next.config.js"
+  ],
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier/@typescript-eslint",
+      "plugin:prettier/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:import/typescript"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "plugins": [
+      "prettier",
+      "react-hooks"
+    ],
+    "rules": {
+      "prettier/prettier": "error",
+      "@typescript-eslint/interface-name-prefix": 0,
+      "@typescript-eslint/explicit-function-return-type": 0,
+      "@typescript-eslint/explicit-member-accessibility": 0,
+      "@typescript-eslint/no-explicit-any": 0,
+      "@typescript-eslint/explicit-module-boundary-types": 0,
+      "prefer-arrow-callback": "error",
+      "prefer-const": "error",
+      "curly": "error",
+      "dot-notation": "error",
+      "sort-imports": 0,
+      "import/order": 1,
+      "react-hooks/rules-of-hooks": 2,
+      "react-hooks/exhaustive-deps": 2,
+      "react/prop-types": 0
+    }
+  }
+}
