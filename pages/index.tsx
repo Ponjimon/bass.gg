@@ -55,7 +55,7 @@ const Home = (): JSX.Element => {
   return (
     <>
       <GlobalStyle />
-      <BackgroundVideo autoPlay muted loop>
+      <BackgroundVideo autoPlay muted loop playsInline>
         <source src="/static/bgvid.mp4" type="video/mp4"></source>
       </BackgroundVideo>
       <Header>
