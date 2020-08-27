@@ -1,7 +1,6 @@
 import React from 'react';
 import reset from 'styled-reset';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Container } from '../components/styles';
 
 const BackgroundVideo = styled.video`
   object-fit: cover;
@@ -25,18 +24,18 @@ const Header = styled.header`
 const GlobalStyle = createGlobalStyle`
     ${reset};
     html {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 150%;
-    line-height: 1.4;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-size: 150%;
+      line-height: 1.4;
     }
     h1 {
-    font-family: 'Syncopate', sans-serif;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 3vw;
-    line-height: 1.2;
-    font-size: 3vw;
-    text-align: center;
+      font-family: 'Syncopate', sans-serif;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 3vw;
+      line-height: 1.2;
+      font-size: 3vw;
+      text-align: center;
     span {
       display: block;
       font-size: 10vw;
@@ -44,6 +43,9 @@ const GlobalStyle = createGlobalStyle`
     }
     html, body {
       height: 100%;
+    }
+    body {
+      background-color: #000;
     }
 }
     * {
