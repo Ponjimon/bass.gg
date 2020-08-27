@@ -4,11 +4,12 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { Container } from '../components/styles';
 
 const BackgroundVideo = styled.video`
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
   position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
+  top: 0;
+  left: 0;
 `;
 
 const GlobalStyle = createGlobalStyle`
