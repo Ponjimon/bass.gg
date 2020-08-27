@@ -42,6 +42,10 @@ export default class AppDocument extends Document {
         <Head>
           <link rel="manifest" href="/manifest.json" />
           <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Syncopate:700"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />
