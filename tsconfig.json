@@ -1,6 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    /*
+      Note that the "module" setting will be overriden by nextjs automatically
+      (cf. https://github.com/zeit/next.js/discussions/10780).
+      If you need to change it, you should use the --compiler-options or provide a separate
+      tsconfig.json entirely.
+    */
+    "module": "esnext",
+    "target": "ES2019",
     "lib": [
       "dom",
       "dom.iterable",
@@ -12,15 +19,11 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "downlevelIteration": true,
     "jsx": "preserve",
-    "typeRoots": ["node_modules/@types", "./typings"]
+    "incremental": true
   },
   "exclude": [
     "node_modules"
@@ -28,7 +31,6 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "./typings/**/*.d.ts"
+    "**/*.tsx"
   ]
 }

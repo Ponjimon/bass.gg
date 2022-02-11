@@ -1,43 +1,39 @@
 {
   "name": "bass.gg",
-  "dummy": true,
-  "version": "0.1.0",
-  "private": true,
-  "author": "Simon <sn@hitbox.tv>",
+  "version": "1.0.0",
+  "description": "bass.gg",
+  "main": "index.js",
+  "repository": "https://github.com/ponjimon/bass.gg",
+  "author": "Simon <770632+Ponjimon@users.noreply.github.com>",
+  "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "devDependencies": {
-    "@commitlint/cli": "^9.1.2",
-    "@commitlint/config-conventional": "^9.1.2",
-    "@types/node": "^14.6.0",
-    "@types/react": "^16.9.47",
-    "@types/react-lazy-load-image-component": "^1.5.1",
-    "@types/styled-components": "^5.1.2",
-    "@typescript-eslint/eslint-plugin": "^3.10.1",
-    "@typescript-eslint/parser": "^3.10.1",
-    "babel-plugin-styled-components": "^1.11.1",
-    "eslint": "^7.7.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.6",
-    "eslint-plugin-react-hooks": "^4.1.0",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.13",
-    "prettier": "^2.1.0",
-    "typescript": "^4.0.2"
-  },
-  "dependencies": {
-    "next": "^9.5.2",
-    "next-offline": "^5.0.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-lazy-load-image-component": "^1.5.0",
-    "styled-components": "^5.1.1",
-    "styled-reset": "^4.2.2"
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
+    "@types/node": "^16.11.6",
+    "@types/react": "^17.0.34",
+    "@types/styled-components": "^5.1.15",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "babel-plugin-styled-components": "^1.13.3",
+    "eslint": "^8.1.0",
+    "eslint-config-next": "^12.0.3",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "next-offline": "^5.0.5",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4"
   },
   "babel": {
     "presets": [
@@ -47,7 +43,9 @@
       [
         "styled-components",
         {
-          "ssr": true
+          "ssr": true,
+          "displayName": true,
+          "preprocess": false
         }
       ]
     ]
@@ -56,7 +54,8 @@
     "trailingComma": "es5",
     "singleQuote": true,
     "semi": true,
-    "parser": "typescript"
+    "parser": "typescript",
+    "arrowParens": "avoid"
   },
   "commitlint": {
     "extends": [
@@ -72,23 +71,24 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "eslintIgnore": [
-    "next.config.js"
+    "next.config.js",
+    "lib/",
+    "*.d.ts"
   ],
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
     "extends": [
       "plugin:react/recommended",
       "plugin:@typescript-eslint/recommended",
-      "prettier/@typescript-eslint",
       "plugin:prettier/recommended",
       "plugin:import/errors",
       "plugin:import/warnings",
-      "plugin:import/typescript"
+      "plugin:import/typescript",
+      "plugin:@next/next/recommended"
     ],
     "parserOptions": {
       "ecmaVersion": 2018,
@@ -100,6 +100,9 @@
     "settings": {
       "react": {
         "version": "detect"
+      },
+      "import/resolver": {
+        "typescript": {}
       }
     },
     "plugins": [
@@ -108,20 +111,30 @@
     ],
     "rules": {
       "prettier/prettier": "error",
+      "@typescript-eslint/camelcase": 0,
       "@typescript-eslint/interface-name-prefix": 0,
       "@typescript-eslint/explicit-function-return-type": 0,
       "@typescript-eslint/explicit-member-accessibility": 0,
-      "@typescript-eslint/no-explicit-any": 0,
       "@typescript-eslint/explicit-module-boundary-types": 0,
+      "@typescript-eslint/no-explicit-any": 0,
+      "@typescript-eslint/no-empty-interface": 0,
       "prefer-arrow-callback": "error",
       "prefer-const": "error",
       "curly": "error",
       "dot-notation": "error",
       "sort-imports": 0,
       "import/order": 1,
+      "import/no-named-as-default": 0,
       "react-hooks/rules-of-hooks": 2,
       "react-hooks/exhaustive-deps": 2,
       "react/prop-types": 0
     }
+  },
+  "dependencies": {
+    "next": "^12.0.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3",
+    "styled-reset": "^4.3.4"
   }
 }

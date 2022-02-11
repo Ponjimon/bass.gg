@@ -1,20 +1,60 @@
-const withOffline = require('next-offline');
+const nextOffline = require('next-offline');
 
-const nextConfig = {
-    transformManifest: manifest => ['/'].concat(manifest), // add the homepage to the cache
-    workboxOpts: {
-        swDest: 'static/service-worker.js',
-    },
-    experimental: {
-        async rewrites() {
-            return [
-                {
-                    source: '/service-worker.js',
-                    destination: '/_next/static/service-worker.js',
-                },
-            ];
-        },
-    },
+const config = {
+  swcMinify: true,
+  webpack: (config, { dev, isServer }) => {
+    if (!dev) {
+      config.devtool = 'source-map';
+    }
+    if (isServer) {
+      config.resolve.mainFields.reverse();
+    }
+    return config;
+  },
 };
 
-module.exports = withOffline(nextConfig);
+const offlineConfig = [
+  nextOffline,
+  {
+    transformManifest: manifest => ['/'].concat(manifest), // add the homepage to the cache
+    workboxOpts: {
+      swDest: 'static/service-worker.js',
+    },
+  },
+];
+
+const compose = plugins => ({
+  webpack(config, options) {
+    return plugins.reduce((config, plugin) => {
+      if (plugin instanceof Array) {
+        const [_plugin, ...args] = plugin;
+        plugin = _plugin(...args);
+      }
+      if (plugin instanceof Function) {
+        plugin = plugin();
+      }
+      if (plugin && plugin.webpack instanceof Function) {
+        return plugin.webpack(config, options);
+      }
+      return config;
+    }, config);
+  },
+
+  webpackDevMiddleware(config) {
+    return plugins.reduce((config, plugin) => {
+      if (plugin instanceof Array) {
+        const [_plugin, ...args] = plugin;
+        plugin = _plugin(...args);
+      }
+      if (plugin instanceof Function) {
+        plugin = plugin();
+      }
+      if (plugin && plugin.webpackDevMiddleware instanceof Function) {
+        return plugin.webpackDevMiddleware(config);
+      }
+      return config;
+    }, config);
+  },
+});
+
+module.exports = compose([config, offlineConfig]);

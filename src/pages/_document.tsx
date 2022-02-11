@@ -16,8 +16,7 @@ export default class AppDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -41,9 +40,8 @@ export default class AppDocument extends Document {
       <Html>
         <Head>
           <link rel="manifest" href="/manifest.json" />
-          <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
           <link
-            href="https://fonts.googleapis.com/css?family=Syncopate:700"
+            href="https://fonts.googleapis.com/css?family=Roboto:400&display=optional"
             rel="stylesheet"
           />
         </Head>
